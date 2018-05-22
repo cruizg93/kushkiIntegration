@@ -16,7 +16,7 @@ public class WebForm extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("page.jsp?urlAction=decodePaymentResponseServlet&publicMerchantId=10000002825331705579151380634343&paymentNumOrder=");
+		response.sendRedirect("webform.jsp?urlAction=decodePaymentResponseServlet&publicMerchantId=10000002825331705579151380634343&paymentNumOrder=");
 	}
 	
 	@Override
