@@ -36,6 +36,16 @@
         <artifactId>tomcat-jsp-api</artifactId>
         <version>${tomcat.version}</version>
     </dependency>
+    <dependency>
+	    <groupId>icg.gateway</groupId>
+	    <artifactId>ICGGatewayInterface</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+    <dependency>
+	    <groupId>com.plazasoftware</groupId>
+	    <artifactId>kushkipagos</artifactId>
+	    <version>0.0.1</version>
+	</dependency>
   </dependencies>
   <build>
     <finalName>embeddedTomcatSample</finalName>
@@ -62,6 +72,45 @@
                 </execution>
             </executions>
         </plugin>
+        <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-install-plugin</artifactId>
+		    <version>2.5.2</version>
+		    <executions>
+		        <execution>
+		            <id>install-external</id>
+		            <phase>clean</phase>
+		            <configuration>
+		                <file>${project.basedir}/src/main/resources/ICGGatewayInterface.jar</file>
+		                <repositoryLayout>default</repositoryLayout>
+		                <groupId>icg.gateway</groupId>
+		                <artifactId>ICGGatewayInterface</artifactId>
+		                <version>0.0.1-SNAPSHOT</version>
+		                <packaging>jar</packaging>
+		                <generatePom>true</generatePom>
+		            </configuration>
+		            <goals>
+		                <goal>install-file</goal>
+		            </goals>
+		        </execution>
+		        <execution>
+		            <id>install-external-2</id>
+		            <phase>clean</phase>
+		            <configuration>
+		                <file>${project.basedir}/src/main/resources/kushkipagos-kushkipagos-0.0.1.jar</file>
+		                <repositoryLayout>default</repositoryLayout>
+		                <groupId>com.plazasoftware</groupId>
+		                <artifactId>kushkipagos</artifactId>
+		                <version>0.0.1</version>
+		                <packaging>jar</packaging>
+		                <generatePom>true</generatePom>
+		            </configuration>
+		            <goals>
+		                <goal>install-file</goal>
+		            </goals>
+		        </execution>
+		    </executions>
+		</plugin>
     </plugins>
   </build>
 </project>
