@@ -65,7 +65,7 @@
 </style>
 </head>
 <body>
-<form id="getNewPaymentNumOrder" method="post" action="" style="max-width:50%; margin-top:50px; box-shadow: 0px 15px 55px 9px rgba(0,0,0,0.75);padding:15px;border-radius:20px;" class="container align-middle">
+<form id="processPayment" method="post" action="" style="max-width:50%; margin-top:50px; box-shadow: 0px 15px 55px 9px rgba(0,0,0,0.75);padding:15px;border-radius:20px;" class="container align-middle">
 <table id="espanolForm"style="width:100%">
 	<tr>
 		<td style="float:left;" colspan="2">
@@ -95,7 +95,7 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			<input class="form-control" type="text" id="totalAmount" name="totalAmount" onkeyup="checkDec(this);" value="<%=request.getParameter("total")%>" readonly/>
+			<input class="form-control" type="text" id="totalAmount" name="totalAmount" onkeyup="checkDec(this);" value="<%=request.getParameter("totalAmount")%>" readonly/>
 		</td>
 	</tr>
 	<tr>
@@ -183,10 +183,10 @@
 	</tr>
 </table>
 </form>
-<form id="checkout-form" action="decodePaymentResponseServlet" method="post">
+<form id="checkout-form" action="processPayment" method="post">
  <input type="hidden" id="kushki-token" name="kushki-token">
  <input type="hidden" id="months" name="months" value="0">
- <input type="hidden" id="totalAmount" name="totalAmount" value="<%=request.getParameter("total")%>">
+ <input type="hidden" id="totalAmount" name="totalAmount" value="<%=request.getParameter("totalAmount")%>">
  <input type="hidden" id="isTest" name="isTest" value="true">
  <input type="hidden" id="paymentNumOrder" name="paymentNumOrder" value="<%=request.getParameter("paymentNumOrder")%>">
  <input type="hidden" id="currency" name="currency" value="COP"/>
@@ -230,38 +230,6 @@ function checkDec(el){
 	}
 }
 
-function swaplanguage(){
-	var toogle = document.getElementById("idiomToogle").checked;
-	var yearSelect = document.getElementById("expireYY");
-	//spanish
-	if(toogle){
-		document.getElementById("lblAmount").innerHTML ="Total";
-		document.getElementById("lblName").innerHTML ="Nombre como aparece en la tarjeta";
-		document.getElementById("lblCardNumber").innerHTML ="Numero de la tarjeta";
-		document.getElementById("lblExpiry").innerHTML ="Fecha de expiracion";
-		document.getElementById("lblCVV").innerHTML ="Codigo de seguridad (CVV)";
-		document.getElementById("btnSend").innerHTML ="Enviar";
-		document.getElementById("expireMMenglish").style.display = "none";
-		document.getElementById("expireMMespanol").style.display = "inline-block";
-		yearSelect[0].text = "Año";
-	}else{
-		document.getElementById("lblAmount").innerHTML ="Total";
-		document.getElementById("lblName").innerHTML ="Name as its appear on the card";
-		document.getElementById("lblCardNumber").innerHTML ="Card Number";
-		document.getElementById("lblExpiry").innerHTML ="Expiration Date";
-		document.getElementById("lblCVV").innerHTML ="Security Code (CVV)";
-		document.getElementById("btnSend").innerHTML ="Send";
-		document.getElementById("expireMMenglish").style.display = "inline-block";
-		document.getElementById("expireMMespanol").style.display = "none";
-		yearSelect[0].text = "Year";
-	}
-
-}
-
-function submitForm(){
-	
-}
-
 function getToken(){
 	var month;
 	var year = document.getElementById("expireYY");
@@ -283,15 +251,7 @@ function getToken(){
 	document.getElementById("expiryYear").value = year.options[year.selectedIndex].value;
 	document.getElementById("expiry").value = month.options[month.selectedIndex].value+""+year.options[year.selectedIndex].value;
 	var amount = document.getElementById("totalAmount").value;
-	
-	
-	
-	
-	
-	
-	
-	
-	var publicmerchantid= "asdasdas"
+	var publicmerchantid= "10000002825331705579151380634343&"
 	var geturl = "https://api-uat.kushkipagos.com/v1/tokens"
 	
 	var data = "{\"card\": {\"name\": \""+document.getElementById("name").value+"\",\"number\":\""+ document.getElementById("number").value+"\",\"expiryMonth\":\""+document.getElementById("expiryMonth").value
@@ -309,11 +269,11 @@ function getToken(){
 		    data: data
 		  })
 		  .always(function(datas){
-		      console.log(datas);
+		      	console.log(datas);
 		    	if(datas.token != undefined){
 		    	  document.getElementById("kushki-token").value = datas.token;
 		    	  document.getElementById("checkout-form").submit();
-		      }
+		      	}
 		    });
 }
 
