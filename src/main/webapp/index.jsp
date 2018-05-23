@@ -7,7 +7,6 @@
 <body>
 <form action="webForm" id="indexForm" method="get">
 	<input type="text" id="totalAmount" name="totalAmount" placeholder="total" value="500000">
-	<input type="text" id="publicMerchantId" name="publicMerchantId" placeholder="publicMerchantId" value="10000002825331705579151380634343">
 	<input type="submit" value="Next"/>
 </form>
 </body>
