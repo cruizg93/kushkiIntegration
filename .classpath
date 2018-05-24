@@ -22,5 +22,12 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/ComputerGAP/Documents/Projects/espana/ICGGatewayInterface.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ComputerGAP/Documents/Projects/espana/workspace/kushkipagos/target/kushkipagos-kushkipagos-0.0.1.jar"/>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
