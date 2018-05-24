@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+
 import com.kushki.Kushki;
 import com.kushki.KushkiException;
 import com.kushki.enums.KushkiEnvironment;
@@ -40,7 +42,7 @@ public class ProcessPayment extends HttpServlet{
 			BigDecimal totalAmount = new BigDecimal(req.getParameter("totalAmount"));
 			String token = req.getParameter("token");
 			Amount amount = new Amount(totalAmount.doubleValue(), 0d,0d,0d);
-	    	Transaction transaction =kushki.charge(token, amount, 0, null);
+	    	Transaction transaction =kushki.charge(token, amount, 0, new JSONObject());
 	    	
 	    	String v = voucher(transaction,req.getParameter("ccname"), req.getParameter("paymentNumOrder"),totalAmount);
 	    	
