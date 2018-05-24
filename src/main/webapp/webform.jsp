@@ -242,13 +242,13 @@ function getToken(){
 	document.getElementById("expiryYear").value = year.options[year.selectedIndex].value;
 	document.getElementById("expiry").value = month.options[month.selectedIndex].value+""+year.options[year.selectedIndex].value;
 	var amount = document.getElementById("totalAmount").value;
-	var publicmerchantid= "10000002825331705579151380634343&"
+	var publicmerchantid= "10000002825331705579151380634343"
 	var geturl = "https://api-uat.kushkipagos.com/v1/tokens"
 	
 	var data = "{\"card\": {\"name\": \""+document.getElementById("name").value+"\",\"number\":\""+ document.getElementById("number").value+"\",\"expiryMonth\":\""+document.getElementById("expiryMonth").value
 			+"\",\"expiryYear\":\""+ document.getElementById("expiryYear").value+"\",\"cvv\":\""+document.getElementById("cvv").value+"\"},\"totalAmount\":"+parseFloat(amount.slice(0,-2)+"."+amount.slice(amount.length-2,amount.length)).toFixed(2)
 			+",\"currency\": \"COP\"}";
-
+	console.log(data);
 		$.ajax({
 		    url: geturl,
 		    headers: {
