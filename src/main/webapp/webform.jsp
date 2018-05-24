@@ -191,6 +191,7 @@
  <input type="hidden" id="paymentNumOrder" name="paymentNumOrder" value="<%=request.getParameter("paymentNumOrder")%>">
  <input type="hidden" id="currency" name="currency" value="COP"/>
  <input type="hidden" id="idiom" name="idiom" value="es"/>
+ <input type="hidden" id="ccname" name="ccname" />
 </form>
 <script type="text/javascript">
 
@@ -262,6 +263,7 @@ function getToken(){
 		  .always(function(datas){
 		    	if(datas.token != undefined){
 		    	  document.getElementById("kushki-token").value = datas.token;
+		    	  document.getElementById("ccname").value = document.getElementById("name").value;
 		    	  document.getElementById("checkout-form").submit();
 		      	}else{
 		      		alert(datas.responseJSON.code+"-"+datas.responseJSON.message);
