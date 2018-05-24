@@ -260,10 +260,12 @@ function getToken(){
 		    data: data
 		  })
 		  .always(function(datas){
-		      	console.log(datas);
 		    	if(datas.token != undefined){
 		    	  document.getElementById("kushki-token").value = datas.token;
 		    	  document.getElementById("checkout-form").submit();
+		      	}else{
+		      		alert(datas.responseJSON.code+"-"+datas.responseJSON.message);
+		      		document.location.reload(true);
 		      	}
 		    });
 }
