@@ -6,7 +6,7 @@
 </head>
 <body>
 <form action="webForm" id="indexForm" method="get">
-	<input type="text" id="totalAmount" name="totalAmount" placeholder="total" value="500000">
+	<input type="text" id="totalAmount" name="totalAmount" placeholder="total" value="50000000">
 	<input type="submit" value="Next"/>
 </form>
 </body>

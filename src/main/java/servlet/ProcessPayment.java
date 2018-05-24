@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.crypto.NoSuchPaddingException;
@@ -40,7 +42,7 @@ public class ProcessPayment extends HttpServlet{
 			
 			Kushki kushki = new Kushki("10000002825366457629151380634343", "es", "COP",KushkiEnvironment.TESTING);
 			BigDecimal totalAmount = new BigDecimal(req.getParameter("totalAmount")).movePointLeft(2);
-			String token = req.getParameter("token");
+			String token = req.getParameter("kushki-token");
 			Amount amount = new Amount(totalAmount.doubleValue(), 0d,0d,0d);
 	    	Transaction transaction =kushki.charge(token, amount, 0, new JSONObject());
 	    	
@@ -73,12 +75,16 @@ public class ProcessPayment extends HttpServlet{
 	public String voucher(Transaction transaction, String name, String paymentNumber, BigDecimal totalAmount) {
 		StringBuilder sb = new StringBuilder();
 		if(transaction.isSuccessful()) {
+			LocalDateTime now = LocalDateTime.now();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	        String formatDateTime = now.format(formatter);
+	        
 			sb.append("<div class=\"paymentDiv\" style=\"padding:5%\"><table class=\"paymentTable\" style=\"border:5px solid black; width: 400px; border-radius: 5%; border-spacing:10px;\">");
 			sb.append("<tr><td class=\"paymentTitle\" style=\"text-align: center;\" colspan=\"2\"><h1>Comprobante De Pago</h1></td></tr>");
 			sb.append("<tr>	<td class=\"paymentLabel\" style=\"text-align:right; width: 50%; font-weight: bold;\">Client:</td>");
 			sb.append("		<td class=\"paymentValue\" style=\"text-align: left; width: 50%;\"> "+name+"</td></tr>");
 			sb.append("<tr>	<td class=\"paymentLabel\" style=\"text-align:right; width: 50%; font-weight: bold;\">Fecha:</td>");
-			sb.append("		<td class=\"paymentValue paymentDate\" style=\"text-align: left; width: 50%;\"> "+new Date()+"</td></tr>");
+			sb.append("		<td class=\"paymentValue paymentDate\" style=\"text-align: left; width: 50%;\"> "+formatDateTime+"</td></tr>");
 			sb.append("<tr>	<td class=\"paymentLabel\" style=\"text-align:right; width: 50%; font-weight: bold;\">Numero de Orden:</td>");
 			sb.append("		<td class=\"paymentValue\" style=\"text-align: left; width: 50%;\">#"+paymentNumber+"</td></tr>");
 			sb.append("<tr>	<td class=\"paymentLabel\" style=\"text-align:right; width: 50%; font-weight: bold;\">Numero de Confirmacion:</td>");
