@@ -264,10 +264,10 @@ function getToken(){
 		    	if(datas.token != undefined){
 		    	  document.getElementById("kushki-token").value = datas.token;
 		    	  document.getElementById("ccname").value = document.getElementById("name").value;
+		    	  alert(datas.token);
 		    	  document.getElementById("checkout-form").submit();
 		      	}else{
 		      		alert(datas.responseJSON.code+"-"+datas.responseJSON.message);
-		      		document.location.reload(true);
 		      	}
 		    });
 }
