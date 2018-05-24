@@ -233,20 +233,11 @@ function checkDec(el){
 function getToken(){
 	var month;
 	var year = document.getElementById("expireYY");
-	if(document.getElementById("idiomToogle").checked){
-		document.getElementById("idiom").value = "es";
-		month = document.getElementById("expireMMespanol");
-	}else{
-		document.getElementById("idiom").value = "en";
-		month = document.getElementById("expireMMenglish");
-	}
-
-	if(document.getElementById("currencyToogle").checked){
-		document.getElementById("currency").value = "USD";
-	}else{
-		document.getElementById("currency").value = "COP";
-	}
+	document.getElementById("idiom").value = "es";
+	month = document.getElementById("expireMMespanol");
+	document.getElementById("currency").value = "COP";
 	console.log(document.getElementById("currency").value);
+	
 	document.getElementById("expiryMonth").value = month.options[month.selectedIndex].value;
 	document.getElementById("expiryYear").value = year.options[year.selectedIndex].value;
 	document.getElementById("expiry").value = month.options[month.selectedIndex].value+""+year.options[year.selectedIndex].value;
