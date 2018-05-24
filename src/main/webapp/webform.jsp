@@ -105,7 +105,7 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			<input class="form-control" type="text" id="name" name="name" value="Cristian Ruiz Gonzalez"/>
+			<input class="form-control" type="text" id="name" name="name" />
 		</td>
 	</tr>
 	<tr>
@@ -115,7 +115,7 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			<input class="form-control" type="number" id="number" name="number" value="4737029066712895"/>
+			<input class="form-control" type="number" id="number" name="number" />
 		</td>
 	</tr>
 	<tr>
