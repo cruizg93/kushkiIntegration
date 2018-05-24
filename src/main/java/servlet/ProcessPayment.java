@@ -39,7 +39,7 @@ public class ProcessPayment extends HttpServlet{
 		try {
 			
 			Kushki kushki = new Kushki("10000002825366457629151380634343", "es", "COP",KushkiEnvironment.TESTING);
-			BigDecimal totalAmount = new BigDecimal(req.getParameter("totalAmount"));
+			BigDecimal totalAmount = new BigDecimal(req.getParameter("totalAmount")).movePointLeft(2);
 			String token = req.getParameter("token");
 			Amount amount = new Amount(totalAmount.doubleValue(), 0d,0d,0d);
 	    	Transaction transaction =kushki.charge(token, amount, 0, new JSONObject());
