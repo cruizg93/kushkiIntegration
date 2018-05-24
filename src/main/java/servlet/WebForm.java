@@ -9,9 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.plazasoftware.kushkipagos.gateway.CommonGateway;
-
-import icg.gateway.common.CommonGatewayInterface;
 
 @WebServlet(
         name = "webForm", 
