@@ -6,8 +6,9 @@
 </head>
 <body>
 <form action="webForm" id="indexForm" method="get">
+	<h1>Ingrese el total a cobrar</h1>
 	<input type="text" id="totalAmount" name="totalAmount" placeholder="total" value="50000000">
-	<input type="submit" value="Next"/>
+	<input type="submit" value="Siguiente"/>
 </form>
 </body>
 </html>
